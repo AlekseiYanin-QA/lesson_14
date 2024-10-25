@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Random;
+import static src.ListPerformanceTest.*;
+import static src.RemoveDuplicates.*;
+import static src.SwapKeysAndValues.*;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +17,7 @@ public class Main {
         originalMap.put(2, "Два");
         originalMap.put(3, "Три");
 
-        HashMap<String, Integer> swappedMap = SwapKeysAndValues.swapKeysAndValues(originalMap);
+        HashMap<String, Integer> swappedMap = swapKeysAndValues(originalMap);
 
         System.out.println("Исходный HashMap: " + originalMap);
         System.out.println("Измененный HashMap: " + swappedMap);
@@ -21,16 +25,16 @@ public class Main {
         // Второе задание
         System.out.println("\nВыполнение второго задания");
 
-        ArrayList<Integer> arrayList = ListPerformanceTest.createArrayList();
-        LinkedList<Integer> linkedList = ListPerformanceTest.createLinkedList();
+        ArrayList<Integer> arrayList = createArrayList();
+        LinkedList<Integer> linkedList = createLinkedList();
 
         for (int i = 0; i < 1000; i++) {
             arrayList.get(new Random().nextInt(arrayList.size()));
             linkedList.get(new Random().nextInt(linkedList.size()));
         }
 
-        long arrayListTime = ListPerformanceTest.measureTime(() -> arrayList.get(new Random().nextInt(arrayList.size())));
-        long linkedListTime = ListPerformanceTest.measureTime(() -> linkedList.get(new Random().nextInt(linkedList.size())));
+        long arrayListTime = measureTime(() -> arrayList.get(new Random().nextInt(arrayList.size())));
+        long linkedListTime = measureTime(() -> linkedList.get(new Random().nextInt(linkedList.size())));
 
 
         System.out.println("Время выполнения для ArrayList: " + arrayListTime + " ms");
@@ -53,7 +57,7 @@ public class Main {
         strings.add("банан");
         strings.add("арбуз");
 
-        RemoveDuplicates.removeDuplicates(strings);
+        removeDuplicates(strings);
 
         System.out.println(strings);
     }
